@@ -1,5 +1,6 @@
 // Select the save button element
 const saveBtn = document.getElementById('saveBtn');
+let selectCategoryID = null;
 
 // Generate unique ID
 function uniqueid() {
@@ -25,6 +26,9 @@ function saveCategories() {
     // Clear the input field
     document.getElementById('categoryName').value = '';
 
+    // hide the edit modal
+    $('#createCategory').modal('hide');
+
     // Refresh the table
     readCategory();
 }
@@ -46,6 +50,53 @@ function deleteCategory(id) {
     // Refresh the table
     readCategory();
 }
+
+// Edit button functionality
+function editCategory(id) {
+    // Retrieve categories from localStorage
+    const getCategory = JSON.parse(localStorage.getItem('categories')) || [];
+    // Find the category with the matching id
+    const categoryToEdit = getCategory.find(category => category.id === id);
+
+    if (categoryToEdit) {
+        // Set the selectedCategoryId to the current category's id
+        selectedCategoryId = id;
+
+        // Populate the input field with the current category name
+        document.getElementById('updateCategoryName').value = categoryToEdit.name;
+
+        // Show the edit modal
+        $('#editCategory').modal('show');
+    }
+}
+
+// Save the edited category
+function updateCategory() {
+    const updatedCategoryName = document.getElementById('updateCategoryName').value;
+
+    // Retrieve categories from localStorage
+    const getCategory = JSON.parse(localStorage.getItem('categories')) || [];
+
+    // Find the category with the matching id and update its name
+    const updatedCategories = getCategory.map(category => {
+        if (category.id === selectedCategoryId) {
+            return { ...category, name: updatedCategoryName };
+        }
+        return category;
+    });
+
+    // Update localStorage with the new array
+    localStorage.setItem('categories', JSON.stringify(updatedCategories));
+
+    // Refresh the table
+    readCategory();
+
+    // Hide the edit modal
+    $('#editCategory').modal('hide');
+}
+
+// Attach the update function to the update button
+updateBtn.addEventListener('click', updateCategory);
 
 // Fetch the table and display categories
 function readCategory() {
@@ -75,6 +126,7 @@ function readCategory() {
         const editButton = document.createElement('button');
         editButton.className = 'btn btn-primary editBtn';
         editButton.textContent = 'Edit';
+        editButton.addEventListener('click', () => editCategory(cats.id))
 
         // Create delete button
         const deleteButton = document.createElement('button');
