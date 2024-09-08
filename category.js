@@ -44,7 +44,7 @@ function deleteCategory(id) {
     // Filter out the category with the matching id
     const updatedCategories = getCategory.filter(category => category.id !== id);
 
-    // Update localStorage with the new array
+    // Update localStorge with the new array
     localStorage.setItem('categories', JSON.stringify(updatedCategories));
 
     // Refresh the table
@@ -53,16 +53,16 @@ function deleteCategory(id) {
 
 // Edit button functionality
 function editCategory(id) {
-    // Retrieve categories from localStorage
+    // Retrieve categories from localStrage
     const getCategory = JSON.parse(localStorage.getItem('categories')) || [];
     // Find the category with the matching id
     const categoryToEdit = getCategory.find(category => category.id === id);
 
     if (categoryToEdit) {
-        // Set the selectedCategoryId to the current category's id
+        // Set the selectedCategoryId to the current categor id
         selectedCategoryId = id;
 
-        // Populate the input field with the current category name
+        // Populate the input field with the current categor
         document.getElementById('updateCategoryName').value = categoryToEdit.name;
 
         // Show the edit modal
