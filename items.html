@@ -8,8 +8,6 @@
     <title>Focus - Bootstrap Admin Dashboard </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
-    <!-- Custom Stylesheet -->
-    <link href="./css/style.css" rel="stylesheet">
     <!-- Datatable -->
     <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Custom Stylesheet -->
@@ -73,97 +71,11 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search"
-                                            aria-label="Search">
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                                     </form>
                                 </div>
                             </div>
                         </div>
-
-                        <ul class="navbar-nav header-right">
-                            <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-bell"></i>
-                                    <div class="pulse-css"></div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="danger"><i class="ti-bookmark"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as
-                                                        unsolved.
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-heart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-image"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                    </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <i class="mdi mdi-account"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item">
-                                        <i class="icon-user"></i>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
-                                    <a href="./email-inbox.html" class="dropdown-item">
-                                        <i class="icon-envelope-open"></i>
-                                        <span class="ml-2">Inbox </span>
-                                    </a>
-                                    <a href="./page-login.html" class="dropdown-item">
-                                        <i class="icon-key"></i>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
                 </nav>
             </div>
@@ -178,21 +90,30 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
-
-                    <li><a href="category.html" aria-expanded="false"><i class="icon icon-tag">
-                            </i><span class="nav-text">Categories</span></a></li>
-
-                    <li><a href="items.html" aria-expanded="false"><i class="fa fa-list">
-                            </i><span class="nav-text"> Items</span></a></li>
+                    <li class="nav-label first">Main Menu</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./index.html">Dashboard </a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-app-store"></i><span class="nav-text">Restaurant</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./category.html">Category</a></li>
+                            <li><a href="./items.html">Items</a></li>
+                            <li><a href="./app-calender.html">Customers</a></li>
+                            <li><a href="./app-calender.html">Discounts</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>
-
-
         </div>
         <!--**********************************
             Sidebar end
         ***********************************-->
+
         <!--**********************************
             Content body start
         ***********************************-->
@@ -201,8 +122,8 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Hi, welcome back!</h4>
-                            <span class="ml-1">Manage Items </span>
+                            <h4>Manage</h4>
+                            <span class="ml-1">Items</span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -219,23 +140,32 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Items List</h4>
+                                <h4 class="card-title">Item List</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="display" style="min-width: 845px " style="color: black;">
+                                    <table id="example" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Item</th>
-                                                <th>Category</th>
-                                                <th>Price</th>
-                                                <th>Action</th>
+                                                <th>NAME</th>
+                                                <th>CATEGORY</th>
+                                                <th>PRICE</th>
+                                                <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody id="table-body">
-                                           
+                                          
                                         </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>NAME</th>
+                                                <th>CATEGORY</th>
+                                                <th>PRICE</th>
+                                                <th>ACTION</th>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -244,81 +174,103 @@
                 </div>
             </div>
         </div>
+
+            <!-- create Modal -->
+            <div class="modal fade" id="createItem">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Create Item</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group">
+                                <label for="itemName" style="color: black;">Item Name</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="itemName">
+    
+                                <label for="itemCategory" style="color: black;">Category</label>
+                                <select class="form-control sm border border-success" id="itemCategory">
+                                   
+                                </select>
+    
+                                <label for="itemPrice" style="color: black;">Item Price</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Price" id="itemPrice">
+    
+                                <label for="itemImage" style="color: black;">Item Image</label>
+                                <input type="file" class="form-control sm border border-success" placeholder="Price" id="itemImage">
+    
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveItemBtn">Save </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- edit  Modal -->
+             <div class="modal fade" id="updateItemModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Update Item</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group">
+                                <label for="itemName" style="color: black;">Item Name</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="updateItemName">
+    
+                                <label for="itemCategory" style="color: black;">Category</label>
+                                <select class="form-control sm border border-success" id="updateItemCategory">
+                                  
+                                </select>
+    
+                                <label for="itemPrice" style="color: black;">Item Price</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Price" id="updateItemPrice">
+    
+                                <label for="itemImage" style="color: black;">Item Image</label>
+                                <input type="file" class="form-control sm border border-success" placeholder="Price" id="updateItemImage">
+    
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="updateItemBtn">update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>    
         <!--**********************************
             Content body end
         ***********************************-->
 
-        <!-- create Modal -->
-        <div class="modal fade" id="createItem">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Item</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-group">
-                            <label for="itemName" style="color: black;">Item Name</label>
-                            <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="itemName">
 
-                            <label for="itemCategory" style="color: black;">Category</label>
-                            <select class="form-control sm border border-success" id="itemCategory">
-                               
-                            </select>
-
-                            <label for="itemPrice" style="color: black;">Item Price</label>
-                            <input type="text" class="form-control sm border border-success" placeholder="Price" id="itemPrice">
-
-                            <label for="itemImage" style="color: black;">Item Image</label>
-                            <input type="file" class="form-control sm border border-success" placeholder="Price" id="itemImage">
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="saveItemBtn">Save </button>
-                    </div>
-                </div>
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
             </div>
         </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
 
-         <!-- edit  Modal -->
-         <div class="modal fade" id="updateItemModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Update Item</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-group">
-                            <label for="itemName" style="color: black;">Item Name</label>
-                            <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="updateItemName">
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
 
-                            <label for="itemCategory" style="color: black;">Category</label>
-                            <select class="form-control sm border border-success" id="updateItemCategory">
-                              
-                            </select>
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
 
-                            <label for="itemPrice" style="color: black;">Item Price</label>
-                            <input type="text" class="form-control sm border border-success" placeholder="Price" id="updateItemPrice">
-
-                            <label for="itemImage" style="color: black;">Item Image</label>
-                            <input type="file" class="form-control sm border border-success" placeholder="Price" id="updateItemImage">
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="updateItemBtn">update</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+        
     </div>
     <!--**********************************
         Main wrapper end
@@ -331,15 +283,13 @@
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
+    <script src="item.js"></script>
+    
 
 
     <!-- Datatable -->
     <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="./js/plugins-init/datatables.init.js"></script>
-
-    <!-- handle script  -->
-    <script src="item.js"></script>
-
 
 </body>
 

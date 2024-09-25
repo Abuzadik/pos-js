@@ -195,6 +195,7 @@ function updateItemFunc() {
     // Retrieve data 
     const getItemsData = JSON.parse(localStorage.getItem('items')) || [];
 
+    //maping the item id
     const updateItems = getItemsData.map(item => {
         if (item.id === selectItemID) {
             return { ...item, itemName: updateItemName, itemCategory: updateItemCat, itemPrice: updateItemPrice }
@@ -206,4 +207,4 @@ function updateItemFunc() {
     $('#updateItemModal').modal('hide');
 }
 
-updateItemBtn.addEventListener('click',updateItemFunc )
+updateItemBtn.addEventListener('click', updateItemFunc)
