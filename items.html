@@ -10,6 +10,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="./css/style.css" rel="stylesheet">
+    <!-- Datatable -->
+    <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="./css/style.css" rel="stylesheet">
 
 </head>
 
@@ -189,49 +193,54 @@
         <!--**********************************
             Sidebar end
         ***********************************-->
-
         <!--**********************************
             Content body start
         ***********************************-->
         <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome back!</h4>
+                            <span class="ml-1">Manage Items </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#createItem">Create</button>
+                        </ol>
+                    </div>
+                </div>
+                <!-- row -->
 
-            <div class="row">
-                <div class="col-lg-12">
 
-                    <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Item Table</h4> 
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#createItem">Create</button>
+                                <h4 class="card-title">Items List</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table header-border table-responsive-sm table-dark" id="itemTable">
+                                    <table id="example" class="display" style="min-width: 845px " style="color: black;">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Item</th>
-                                                <th>Price</th>
                                                 <th>Category</th>
+                                                <th>Price</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                         </tr>
+                                        <tbody id="table-body">
+                                           
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -239,23 +248,40 @@
             Content body end
         ***********************************-->
 
-            <!-- Modal -->
-    <div class="modal fade" id="createItem">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Item</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">Modal body text goes here.</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- Modal -->
+        <div class="modal fade" id="createItem">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create Item</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group">
+                            <label for="itemName" style="color: black;">Item Name</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="itemName">
+
+                            <label for="itemCategory" style="color: black;">Category</label>
+                            <select class="form-control sm border border-success" id="itemCategory">
+                               
+                            </select>
+
+                            <label for="itemPrice" style="color: black;">Item Price</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Price" id="itemPrice">
+
+                            <label for="itemImage" style="color: black;">Item Image</label>
+                            <input type="file" class="form-control sm border border-success" placeholder="Price" id="itemImage">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveItemBtn">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
     </div>
@@ -272,6 +298,12 @@
     <script src="./js/custom.min.js"></script>
 
 
+    <!-- Datatable -->
+    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="./js/plugins-init/datatables.init.js"></script>
+
+    <!-- handle script  -->
+    <script src="item.js"></script>
 
 
 </body>
