@@ -60,7 +60,7 @@ function editCategory(id) {
 
     if (categoryToEdit) {
         // Set the selectedCategoryId to the current categor id
-        selectedCategoryId = id;
+        selectCategoryID = id;
 
         // Populate the input field with the current categor
         document.getElementById('updateCategoryName').value = categoryToEdit.name;
@@ -79,7 +79,7 @@ function updateCategory() {
 
     // Find the category with the matching id and update its name
     const updatedCategories = getCategory.map(category => {
-        if (category.id === selectedCategoryId) {
+        if (category.id === selectCategoryID) {
             return { ...category, name: updatedCategoryName };
         }
         return category;

@@ -248,7 +248,7 @@
             Content body end
         ***********************************-->
 
-        <!-- Modal -->
+        <!-- create Modal -->
         <div class="modal fade" id="createItem">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -277,7 +277,42 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="saveItemBtn">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="saveItemBtn">Save </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- edit  Modal -->
+         <div class="modal fade" id="updateItemModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Item</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group">
+                            <label for="itemName" style="color: black;">Item Name</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="updateItemName">
+
+                            <label for="itemCategory" style="color: black;">Category</label>
+                            <select class="form-control sm border border-success" id="updateItemCategory">
+                              
+                            </select>
+
+                            <label for="itemPrice" style="color: black;">Item Price</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Price" id="updateItemPrice">
+
+                            <label for="itemImage" style="color: black;">Item Image</label>
+                            <input type="file" class="form-control sm border border-success" placeholder="Price" id="updateItemImage">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="updateItemBtn">update</button>
                     </div>
                 </div>
             </div>

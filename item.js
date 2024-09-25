@@ -22,7 +22,8 @@ $('#createItem').on('show.bs.modal', function () {
 });
 
 //SAVING ITEM DATA 
-
+const saveItemBtn = document.getElementById('saveItemBtn')
+let selectItemID = null
 function saveItems() {
     // Select the elements
     const itemName = document.getElementById('itemName').value;
@@ -72,11 +73,11 @@ function ReadItems() {
     const getItemsData = JSON.parse(localStorage.getItem('items')) || [];
     const categories = JSON.parse(localStorage.getItem('categories')) || [];
 
-      // mapping  category 
-      const categoryMap = {};
-      categories.forEach(category => {
-          categoryMap[category.id] = category.name;
-      })
+    // mapping  category 
+    const categoryMap = {};
+    categories.forEach(category => {
+        categoryMap[category.id] = category.name;
+    })
 
     getItemsData.forEach(item => {
         // Create a new row
@@ -105,6 +106,7 @@ function ReadItems() {
         const editBtn = document.createElement('button')
         editBtn.className = 'btn btn-warning'
         editBtn.textContent = 'edit'
+        editBtn.addEventListener('click', () => editItemFunc(item.id))
 
         //del button 
         const delBtn = document.createElement('button')
@@ -112,19 +114,19 @@ function ReadItems() {
         delBtn.textContent = 'Delete'
         delBtn.addEventListener('click', () => deleteItem(item.id))
 
-       // Append buttons
-       actionCell.appendChild(editBtn);
-       actionCell.appendChild(delBtn);
+        // Append buttons
+        actionCell.appendChild(editBtn);
+        actionCell.appendChild(delBtn);
 
-       // Append cells to row
-       rows.appendChild(idCell);
-       rows.appendChild(itemNameCell);
-       rows.appendChild(itemCatCell);
-       rows.appendChild(itemPriceCell);
-       rows.appendChild(actionCell); 
+        // Append cells to row
+        rows.appendChild(idCell);
+        rows.appendChild(itemNameCell);
+        rows.appendChild(itemCatCell);
+        rows.appendChild(itemPriceCell);
+        rows.appendChild(actionCell);
 
-       // Append row to tableBodyEl
-       tableBodyEl.appendChild(rows);
+        // Append row to tableBodyEl
+        tableBodyEl.appendChild(rows);
 
 
     })
@@ -137,7 +139,7 @@ window.onload = ReadItems;
 //delete item function
 function deleteItem(id) {
     //retrieve items data 
-    const getItems = JSON.parse(localStorage.getItem('items'))
+    const getItems = JSON.parse(localStorage.getItem('items')) || []
     const updateItemsData = getItems.filter(item => item.id !== id)
     alert('Deleted successfully')
     localStorage.setItem('items', JSON.stringify(updateItemsData))
@@ -145,4 +147,63 @@ function deleteItem(id) {
 }
 
 
-//update item function
+//edit item function
+function editItemFunc(id) {
+    // Retrieve data 
+    const getItemsData = JSON.parse(localStorage.getItem('items')) || [];
+    const categories = JSON.parse(localStorage.getItem('categories')) || [];
+
+    // Mapping category 
+    const categoryMap = {};
+    categories.forEach(category => {
+        categoryMap[category.id] = category.name;
+    });
+
+    // Find item by id
+    const findItem = getItemsData.find(item => item.id === id);
+
+    if (findItem) {
+        selectItemID = id;
+        document.getElementById('updateItemName').value = findItem.itemName;
+        document.getElementById('updateItemPrice').value = findItem.itemPrice;
+
+        // Populate the category select input
+        const categorySelect = document.getElementById('updateItemCategory');
+        categorySelect.innerHTML = '';
+
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            categorySelect.appendChild(option);
+        });
+
+        // Set the selected category
+        categorySelect.value = findItem.itemCategory;
+        $('#updateItemModal').modal('show');
+    }
+}
+
+//update item 
+const updateItemBtn = document.getElementById('updateItemBtn')
+function updateItemFunc() {
+    //get elments 
+    const updateItemName = document.getElementById('updateItemName').value
+    const updateItemCat = document.getElementById('updateItemCategory').value
+    const updateItemPrice = document.getElementById('updateItemPrice').value
+
+    // Retrieve data 
+    const getItemsData = JSON.parse(localStorage.getItem('items')) || [];
+
+    const updateItems = getItemsData.map(item => {
+        if (item.id === selectItemID) {
+            return { ...item, itemName: updateItemName, itemCategory: updateItemCat, itemPrice: updateItemPrice }
+        }
+        return item
+    })
+    localStorage.setItem('items', JSON.stringify(updateItems))
+    ReadItems()
+    $('#updateItemModal').modal('hide');
+}
+
+updateItemBtn.addEventListener('click',updateItemFunc )
