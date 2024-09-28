@@ -132,7 +132,6 @@ function readCategory() {
         const deleteButton = document.createElement('button');
         deleteButton.className = 'btn btn-danger deleteBtn';
         deleteButton.textContent = 'Delete';
-        // Pass the correct id to the delete function
         deleteButton.addEventListener('click', () => deleteCategory(cats.id));
 
         // Append buttons to the action cell

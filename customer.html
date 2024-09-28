@@ -71,8 +71,7 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search"
-                                            aria-label="Search">
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                                     </form>
                                 </div>
                             </div>
@@ -124,13 +123,13 @@
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Manage</h4>
-                            <span class="ml-1">Categories</span>
+                            <span class="ml-1">Customers</span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#createCategory">Create</button>
+                                data-target="#createCustomer">Create</button>
                         </ol>
                     </div>
                 </div>
@@ -138,10 +137,10 @@
 
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Category List</h4>
+                                <h4 class="card-title">Customer List</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -149,22 +148,22 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Action</th>
+                                                <th>NAME</th>
+                                                <th>PHONE</th>
+                                                <th>ADDRESS</th>
+                                                <th>ACTION</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tableBody">
-                                            <tr>
-                                                <td>51</td>
-                                                <td>2008/11/13</td>
-                                                <td>$183,000</td>
-                                            </tr>
+                                        <tbody id="tablebody">
+                                          
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Action</th>
+                                                <th>NAME</th>
+                                                <th>PHONE</th>
+                                                <th>ADDRESS</th>
+                                                <th>ACTION</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -176,54 +175,67 @@
             </div>
         </div>
 
+            <!-- create Modal -->
+            <div class="modal fade" id="createCustomer">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Create New Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group">
+                                <label for="cusName" style="color: black;"> Name</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Customer Name" id="cusName" required>
+    
+                                <label for="cusPhone" style="color: black;">Phone</label>
+                                <input type="number" class="form-control sm border border-success" placeholder="Customer Phone" id="cusPhone" required>
 
-
-
-        <!-- create form  Modal -->
-        <div class="modal fade" id="createCategory">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Catagory</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="">
-                            <label for="categoryName" style="color: black;">Category Name</label>
-                            <input type="text" class="form-control sm" placeholder="Category" id="categoryName">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="saveBtn" class="btn btn-primary">Save</button>
+                                <label for="cusAddress" style="color: black;">Address</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Customer Address" id="cusAddress" required>
+    
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveCusBtn">Save </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+    
+             <!-- edit  Modal -->
+             <div class="modal fade" id="editCustomer">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">update Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group">
+                                <label for="cusName" style="color: black;"> Name</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Customer Name" id="editCusName" required>
+    
+                                <label for="cusPhone" style="color: black;">Phone</label>
+                                <input type="number" class="form-control sm border border-success" placeholder="Customer Phone" id="editCusPhone" required>
 
-        <!-- edit form Modal -->
-        <div class="modal fade" id="editCategory">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edit Catagory</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="">
-                            <label for="categoryName" style="color: black;">Category Name</label>
-                            <input type="text" class="form-control sm" placeholder="Category" id="updateCategoryName">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="updateBtn" class="btn btn-primary">Save</button>
+                                <label for="cusAddress" style="color: black;">Address</label>
+                                <input type="text" class="form-control sm border border-success" placeholder="Customer Address" id="editCusAddress" required>
+    
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="updateCusBtn">Update </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+          
+</div>    
         <!--**********************************
             Content body end
         ***********************************-->
@@ -249,7 +261,7 @@
            Support ticket button end
         ***********************************-->
 
-
+        
     </div>
     <!--**********************************
         Main wrapper end
@@ -262,7 +274,8 @@
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
-    <script src="category.js"></script>
+    <script src="customer.js"></script>
+    
 
 
     <!-- Datatable -->
