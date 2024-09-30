@@ -124,13 +124,13 @@
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Manage</h4>
-                            <span class="ml-1">Categories</span>
+                            <span class="ml-1">Discounts</span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#createCategory">Create</button>
+                                data-target="#createDiscount">Create</button>
                         </ol>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Category List</h4>
+                                <h4 class="card-title">Discount List</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -149,21 +149,27 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
+                                                <th>Code</th>
+                                                <th>Description</th>
+                                                <th>Percent %</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tableBody">
                                             <tr>
-                                                <td>51</td>
-                                                <td>2008/11/13</td>
-                                                <td>$183,000</td>
+                                               <td></td>
+                                               <td></td>
+                                               <td></td>
+                                               <td></td>
+                                               <td></td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
+                                                <th>Code</th>
+                                                <th>Description</th>
+                                                <th>Percent %</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -180,50 +186,64 @@
 
 
         <!-- create form  Modal -->
-        <div class="modal fade" id="createCategory">
+        <div class="modal fade" id="createDiscount">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Create Catagory</h5>
+                        <h5 class="modal-title">Create Discount </h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <form action="">
-                            <label for="categoryName" style="color: black;">Category Name</label>
-                            <input type="text" class="form-control sm" placeholder="Category" id="categoryName">
+                            <label for="code" style="color: black;">Code</label>
+                            <input type="text" class="form-control sm" placeholder="Discount Code" id="code">
+
+                            <label for="description" style="color: black;">Description</label>
+                            <textarea class="form-control sm" placeholder="Discount Description" id="description"> </textarea>
+
+                            <label for="percent" style="color: black;">Percent %</label>
+                            <input type="number" class="form-control sm" placeholder="Discount Percent" id="percent">
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="saveBtn" class="btn btn-primary">Save</button>
+                        <button id="saveDiscountBtn" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- edit form Modal -->
-        <div class="modal fade" id="editCategory">
+        <div class="modal fade" id="editDiscount">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Catagory</h5>
+                        <h5 class="modal-title">update Discount </h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <form action="">
-                            <label for="categoryName" style="color: black;">Category Name</label>
-                            <input type="text" class="form-control sm" placeholder="Category" id="updateCategoryName">
+                            <label for="editCode" style="color: black;">Code</label>
+                            <input type="text" class="form-control sm" placeholder="Discount Code" id="editCode">
+
+                            <label for="editDescription" style="color: black;">Description</label>
+                            <textarea class="form-control sm" placeholder="Discount Description" id="editDescription"> </textarea>
+
+                            <label for="editPercent" style="color: black;">Percent %</label>
+                            <input type="number" class="form-control sm" placeholder="Discount Percent" id="editPercent">
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="updateBtn" class="btn btn-primary">Save</button>
+                        <button id="updateDiscountBtn" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <!--**********************************
             Content body end
         ***********************************-->
@@ -262,7 +282,7 @@
     <script src="./vendor/global/global.min.js"></script>
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
-    <script src="category.js"></script>
+    <script src="./discount.js"></script>
 
 
     <!-- Datatable -->
