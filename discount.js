@@ -191,4 +191,4 @@ function updateDiscountFunc() {
     //close ,odal
     $('#editDiscount').modal('hide')
 }
-updateDiscountBtn.addEventListener('click' , updateDiscountFunc)
+updateDiscountBtn.addEventListener('click' , updateDiscountFunc) 

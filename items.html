@@ -71,7 +71,8 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control" type="search" placeholder="Search"
+                                            aria-label="Search">
                                     </form>
                                 </div>
                             </div>
@@ -107,6 +108,9 @@
                         </ul>
                     </li>
 
+                    <li><a href="./pos.html" target="_blank" aria-expanded="false"><i class="fa fa-desktop"
+                                aria-hidden="true"></i><span class="nav-text">POS</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -155,7 +159,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="table-body">
-                                          
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -175,102 +179,108 @@
             </div>
         </div>
 
-            <!-- create Modal -->
-            <div class="modal fade" id="createItem">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Create Item</h5>
-                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form-group">
-                                <label for="itemName" style="color: black;">Item Name</label>
-                                <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="itemName">
-    
-                                <label for="itemCategory" style="color: black;">Category</label>
-                                <select class="form-control sm border border-success" id="itemCategory">
-                                   
-                                </select>
-    
-                                <label for="itemPrice" style="color: black;">Item Price</label>
-                                <input type="text" class="form-control sm border border-success" placeholder="Price" id="itemPrice">
-    
-                                <label for="itemImage" style="color: black;">Item Image</label>
-                                <input type="file" class="form-control sm border border-success" placeholder="Price" id="itemImage">
-    
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="saveItemBtn">Save </button>
-                        </div>
+        <!-- create Modal -->
+        <div class="modal fade" id="createItem">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create Item</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group">
+                            <label for="itemName" style="color: black;">Item Name</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Item Name"
+                                id="itemName">
+
+                            <label for="itemCategory" style="color: black;">Category</label>
+                            <select class="form-control sm border border-success" id="itemCategory">
+
+                            </select>
+
+                            <label for="itemPrice" style="color: black;">Item Price</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Price"
+                                id="itemPrice">
+
+                            <label for="itemImage" style="color: black;">Item Image</label>
+                            <input type="file" class="form-control sm border border-success" placeholder="Price"
+                                id="itemImage">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveItemBtn">Save </button>
                     </div>
                 </div>
             </div>
-    
-             <!-- edit  Modal -->
-             <div class="modal fade" id="updateItemModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Update Item</h5>
-                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form-group">
-                                <label for="itemName" style="color: black;">Item Name</label>
-                                <input type="text" class="form-control sm border border-success" placeholder="Item Name" id="updateItemName">
-    
-                                <label for="itemCategory" style="color: black;">Category</label>
-                                <select class="form-control sm border border-success" id="updateItemCategory">
-                                  
-                                </select>
-    
-                                <label for="itemPrice" style="color: black;">Item Price</label>
-                                <input type="text" class="form-control sm border border-success" placeholder="Price" id="updateItemPrice">
-    
-                                <label for="itemImage" style="color: black;">Item Image</label>
-                                <input type="file" class="form-control sm border border-success" placeholder="Price" id="updateItemImage">
-    
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="updateItemBtn">update</button>
-                        </div>
+        </div>
+
+        <!-- edit  Modal -->
+        <div class="modal fade" id="updateItemModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Item</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-group">
+                            <label for="itemName" style="color: black;">Item Name</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Item Name"
+                                id="updateItemName">
+
+                            <label for="itemCategory" style="color: black;">Category</label>
+                            <select class="form-control sm border border-success" id="updateItemCategory">
+
+                            </select>
+
+                            <label for="itemPrice" style="color: black;">Item Price</label>
+                            <input type="text" class="form-control sm border border-success" placeholder="Price"
+                                id="updateItemPrice">
+
+                            <label for="itemImage" style="color: black;">Item Image</label>
+                            <input type="file" class="form-control sm border border-success" placeholder="Price"
+                                id="updateItemImage">
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="updateItemBtn">update</button>
                     </div>
                 </div>
             </div>
-</div>    
-        <!--**********************************
+        </div>
+    </div>
+    <!--**********************************
             Content body end
         ***********************************-->
 
 
-        <!--**********************************
+    <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
-            </div>
+    <div class="footer">
+        <div class="copyright">
+            <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
         </div>
-        <!--**********************************
+    </div>
+    <!--**********************************
             Footer end
         ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
            Support ticket button start
         ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
            Support ticket button end
         ***********************************-->
 
-        
+
     </div>
     <!--**********************************
         Main wrapper end
@@ -284,7 +294,7 @@
     <script src="./js/quixnav-init.js"></script>
     <script src="./js/custom.min.js"></script>
     <script src="item.js"></script>
-    
+
 
 
     <!-- Datatable -->
