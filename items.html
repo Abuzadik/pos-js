@@ -154,6 +154,7 @@
                                                 <th>ID</th>
                                                 <th>NAME</th>
                                                 <th>CATEGORY</th>
+                                                <th>IMAGE</th>
                                                 <th>PRICE</th>
                                                 <th>ACTION</th>
                                             </tr>
@@ -166,6 +167,7 @@
                                                 <th>ID</th>
                                                 <th>NAME</th>
                                                 <th>CATEGORY</th>
+                                                <th>IMAGE</th>
                                                 <th>PRICE</th>
                                                 <th>ACTION</th>
                                             </tr>
@@ -189,7 +191,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-group">
+                        <form class="form-group" id="createItemForm">
                             <label for="itemName" style="color: black;">Item Name</label>
                             <input type="text" class="form-control sm border border-success" placeholder="Item Name"
                                 id="itemName">
@@ -242,9 +244,9 @@
                                 id="updateItemPrice">
 
                             <label for="itemImage" style="color: black;">Item Image</label>
-                            <input type="file" class="form-control sm border border-success" placeholder="Price"
-                                id="updateItemImage">
-
+                            <input type="file" class="form-control sm border border-success"
+                                placeholder="select item image" id="updateItemImage"> <br>
+                            <img id="currentImage" src="" alt="Current Item Image" style="width: 60px; height: auto;">
                         </form>
                     </div>
                     <div class="modal-footer">

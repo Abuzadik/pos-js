@@ -29,7 +29,7 @@ function saveItems() {
     const itemName = document.getElementById('itemName').value;
     const itemPrice = document.getElementById('itemPrice').value;
     const itemCategory = document.getElementById('itemCategory').value;
-    const itemImage = document.getElementById('itemImage')
+    const itemImage = document.getElementById('itemImage').files[0]; // Get the image file
 
     // Generate ID
     const generateItemId = Math.trunc(Math.random() * 1000000);
@@ -38,29 +38,67 @@ function saveItems() {
         id: generateItemId,
         itemName: itemName,
         itemCategory: itemCategory,
-        itemPrice: itemPrice
+        itemPrice: itemPrice,
+        itemImage: 'images/default-product.png'
     };
 
-    // Retrieve existing data
-    const itemsData = JSON.parse(localStorage.getItem('items')) || [];
+    // Check if an image was selected
+    if (itemImage) {
+        const reader = new FileReader();
 
-    // Push new data to localStorage
-    itemsData.push(items);
-    localStorage.setItem('items', JSON.stringify(itemsData));
+        reader.onloadend = function () {
+            // If an image is provided, use it instead of the default
+            items.itemImage = reader.result; // Use the Base64 string here
 
-    // Clear form data
-    document.getElementById('itemName').value = '';
-    document.getElementById('itemCategory').value = '';
-    document.getElementById('itemPrice').value = '';
+            // Retrieve existing data
+            const itemsData = JSON.parse(localStorage.getItem('items')) || [];
 
-    // Hide modal
-    $('#createItem').modal('hide');
+            // Push new data to localStorage
+            itemsData.push(items);
+            localStorage.setItem('items', JSON.stringify(itemsData));
 
-    ReadItems()
+            // Clear form data
+            document.getElementById('itemName').value = '';
+            document.getElementById('itemCategory').value = '';
+            document.getElementById('itemPrice').value = '';
+            document.getElementById('itemImage').value = '';
+
+            // Hide modal
+            $('#createItem').modal('hide');
+
+            ReadItems();
+        };
+
+        // Read the image file as a Data URL (Base64)
+        reader.readAsDataURL(itemImage);
+    } else {
+        // If no image is selected, save the item with the default image
+        const itemsData = JSON.parse(localStorage.getItem('items')) || [];
+
+        // Push new data to localStorage
+        itemsData.push(items);
+        localStorage.setItem('items', JSON.stringify(itemsData));
+
+        // Clear form data
+        document.getElementById('itemName').value = '';
+        document.getElementById('itemCategory').value = '';
+        document.getElementById('itemPrice').value = '';
+        document.getElementById('itemImage').value = '';
+
+        // Hide modal
+        $('#createItem').modal('hide');
+
+        ReadItems();
+    }
 }
-
 saveItemBtn.addEventListener('click', saveItems);
 
+document.getElementById('createItemForm').addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+        event.preventDefault;
+        saveItems()
+    }
+})
 
 function ReadItems() {
     // select table body element
@@ -95,6 +133,16 @@ function ReadItems() {
         const itemCatCell = document.createElement('td');
         itemCatCell.textContent = categoryMap[item.itemCategory] || 'no category'
 
+        // Create image cell
+        const itemImageCell = document.createElement('td');
+        const itemImage = document.createElement('img');
+        itemImage.src = item.itemImage || 'images/default-product.png';
+        itemImage.alt = item.itemName;
+        itemImage.style.width = '60px';
+        itemImage.style.height = 'auto';
+        itemImageCell.appendChild(itemImage);
+
+
         //Price cells 
         const itemPriceCell = document.createElement('td');
         itemPriceCell.textContent = item.itemPrice;
@@ -122,6 +170,7 @@ function ReadItems() {
         rows.appendChild(idCell);
         rows.appendChild(itemNameCell);
         rows.appendChild(itemCatCell);
+        rows.appendChild(itemImageCell)
         rows.appendChild(itemPriceCell);
         rows.appendChild(actionCell);
 
@@ -131,6 +180,7 @@ function ReadItems() {
 
     })
 }
+
 
 // Load categories when the window loads
 window.onload = ReadItems;
@@ -180,31 +230,69 @@ function editItemFunc(id) {
 
         // Set the selected category
         categorySelect.value = findItem.itemCategory;
+
+        // Set the current image to an img element
+        const currentImageElement = document.getElementById('currentImage');
+        currentImageElement.src = findItem.itemImage;
+        currentImageElement.alt = findItem.itemName;
+
         $('#updateItemModal').modal('show');
     }
 }
 
+
 //update item 
 const updateItemBtn = document.getElementById('updateItemBtn')
+
 function updateItemFunc() {
-    //get elments 
-    const updateItemName = document.getElementById('updateItemName').value
-    const updateItemCat = document.getElementById('updateItemCategory').value
-    const updateItemPrice = document.getElementById('updateItemPrice').value
+    // Get elements 
+    const updateItemName = document.getElementById('updateItemName').value;
+    const updateItemCat = document.getElementById('updateItemCategory').value;
+    const updateItemPrice = document.getElementById('updateItemPrice').value;
+    const updateItemImage = document.getElementById('updateItemImage').files[0]; 
 
     // Retrieve data 
     const getItemsData = JSON.parse(localStorage.getItem('items')) || [];
 
-    //maping the item id
-    const updateItems = getItemsData.map(item => {
+    // Create a new item object to be updated
+    const updatedItem = {
+        itemName: updateItemName,
+        itemCategory: updateItemCat,
+        itemPrice: updateItemPrice,
+        itemImage: null 
+    };
+
+    // If a new image is selected, read it
+    if (updateItemImage) {
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+            updatedItem.itemImage = reader.result; 
+            saveUpdatedItem(updatedItem, getItemsData);
+        };
+
+        // Read the image file as a Data URL (Base64)
+        reader.readAsDataURL(updateItemImage);
+    } else {
+        // If no new image is selected, keep the existing image
+        const existingItem = getItemsData.find(item => item.id === selectItemID);
+        updatedItem.itemImage = existingItem.itemImage;
+        saveUpdatedItem(updatedItem, getItemsData);
+    }
+}
+
+function saveUpdatedItem(updatedItem, getItemsData) {
+    // Map and update the item
+    const updatedItems = getItemsData.map(item => {
         if (item.id === selectItemID) {
-            return { ...item, itemName: updateItemName, itemCategory: updateItemCat, itemPrice: updateItemPrice }
+            return { ...item, ...updatedItem };
         }
-        return item
-    })
-    localStorage.setItem('items', JSON.stringify(updateItems))
-    ReadItems()
+        return item;
+    });
+
+    localStorage.setItem('items', JSON.stringify(updatedItems));
+    ReadItems();
     $('#updateItemModal').modal('hide');
 }
 
-updateItemBtn.addEventListener('click', updateItemFunc)
+updateItemBtn.addEventListener('click', updateItemFunc);
