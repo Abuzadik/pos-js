@@ -75,11 +75,96 @@
                     <div class="text-center text-primary" style="text-transform: capitalize;">
                         <h3>Cart</h3>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Cart </h5>
-                        <p class="card-text">your cart </p>
-                        <a href="#" class="btn btn-primary">check out</a>
+                    <div class="card-body" id="cartBodyField">
+                        <div id="itemsInCart">
+
+                        </div><br>
+                        <div class="container mt-4">
+                            <div class="d-flex justify-content-between">
+                                <div class="mr-2">
+                                    <label for="customers">Customers:</label>
+                                    <select id="customers" class="form-control border-primary">
+                                        <option value="">Select Customer</option>
+                                        <option value="customer1">Customer 1</option>
+                                        <option value="customer2">Customer 2</option>
+                                        <option value="customer3">Customer 3</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="discounts">Discounts:</label>
+                                    <select id="discounts" class="form-control border-primary">
+                                        <option value="">Select Discount</option>
+                                        <option value="discount1">10% Off</option>
+                                        <option value="discount2">20% Off</option>
+                                        <option value="discount3">30% Off</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><br>
+                        
+                        <div class="container">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>TOTAL ITEM'S:</span>
+                                    <span>$ 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>DISCOUNT:</span>
+                                    <span>$ 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>TOTAL TAX 5%:</span>
+                                    <span>$ 0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong>TOTAL AMOUNT:</strong>
+                                    <strong>$ 0.00</strong>
+                                </div>
+                            </div>
+                        </div><br>
+                        
+                        <div class="d-flex justify-content-between align-items-center" style="gap: 10px;">
+                            <button class="btn btn-warning" style="flex: 1; margin: 0;">Clear Cart</button>
+                            <button type="button" class="btn btn-primary" style="flex: 1; margin: 0;">Checkout</button>
+                        </div>
+                        
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Item detail  Modal -->
+    <div class="modal fade" id="itemDetail">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add to Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <h6 class="" id="item-detail">
+
+                        </h6>
+                        <form action="">
+                            <label for="qty" style="color: black;">Item QTY</label>
+                            <div class="input-group mb-3">
+                                <button class="btn btn-outline-primary" type="button" id="decrease-btn">-</button>
+                                <input type="number" class="form-control text-center" id="qty" aria-label="Quantity"
+                                    style="width: 60px; font-weight: bold;" disabled value="1">
+                                <button class="btn btn-outline-primary" type="button" id="increase-btn">+</button>
+                            </div>
+                        </form>
+
                     </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="addCartBtn" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
@@ -90,6 +175,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <script>
+        // Increase and decrease quantity buttons
+        document.getElementById('increase-btn').addEventListener('click', function () {
+            const qtyInput = document.getElementById('qty');
+            qtyInput.value = Math.max(1, (parseInt(qtyInput.value) || 0) + 1);
+        });
+
+        document.getElementById('decrease-btn').addEventListener('click', function () {
+            const qtyInput = document.getElementById('qty');
+            qtyInput.value = Math.max(1, (parseInt(qtyInput.value) || 0) - 1);
+        });
+
+    </script>
 </body>
 
 </html>
