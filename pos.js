@@ -60,31 +60,69 @@ function itemDetailModalFunc(id) {
     $("#itemDetail").modal('show');
 
     addCartBtn.onclick = () => {
-        const qtyInput = document.getElementById('qty'); // Get the quantity input
-        const itemQty = parseInt(qtyInput.value) || 1; // Parse the quantity or default to 1
-        cartFunc(selectedItem.itemName, itemQty, selectedItem.itemPrice); // Pass the correct quantity
+        const qtyInput = document.getElementById('qty');
+        const itemQty = parseInt(qtyInput.value) || 1;
+        cartFunc(selectedItem.itemName, itemQty, selectedItem.itemPrice);
     };
 }
 
-// Cart function 
+// Example usage when adding items to the cart
+let cart = [];
+
 function cartFunc(itemName, itemQty, itemPrice) {
     const cartField = document.getElementById('itemsInCart');
     const newCard = document.createElement('div');
 
-    newCard.className = 'card shadow-lg p-1 mb-2 bg-white rounded'; 
-    newCard.style.width = '100%'; 
-    newCard.style.height = 'auto'; 
+    newCard.className = 'card shadow-lg p-1 mb-2 bg-white rounded';
+    newCard.style.width = '100%';
+    newCard.style.height = 'auto';
+
+    // Store item in the cart array
+    const cartItem = { name: itemName, qty: itemQty, price: itemPrice };
+    cart.push(cartItem);
+
     newCard.innerHTML = `
-        <div class="card-body ">
+        <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
                 <h6 class="mb-0">${itemName}</h6>
                 <p class="mb-0">qty: ${itemQty}</p>
                 <p class="mb-0">$${itemPrice}</p>
-                <button type="button" class="btn btn-danger btn-sm"> <i class="fa fa-trash"> </i></button
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeItem('${itemName}')"> <i class="fa fa-trash"> </i></button>
             </div>
         </div>
     `;
 
     cartField.appendChild(newCard);
+    calculateOrderFunc(cart); // Update the order summary
     $("#itemDetail").modal('hide');
+}
+
+function calculateOrderFunc(cartItems) {
+    let totalItems = 0;
+    let totalPrice = 0;
+    let discount = 0; // Set this to your discount logic if needed
+    const taxRate = 0.05; // 5% tax rate
+
+    cartItems.forEach(item => {
+        totalItems += item.qty;
+        totalPrice += item.price * item.qty;
+    });
+
+    const tax = totalPrice * taxRate;
+    const totalAmount = totalPrice - discount + tax;
+
+    // Update the UI with calculated values
+    document.querySelector('#totalItems').textContent = `$${totalPrice}`;
+    document.querySelector('#discount').textContent = `$${discount}`;
+    document.querySelector('#tax').textContent = `$${tax}`;
+    document.querySelector('#totalAmount').textContent = `$${totalAmount}`;
+}
+
+function removeItem(itemName) {
+    cart = cart.filter(item => item.name !== itemName); // Remove item from cart
+    document.getElementById('itemsInCart').innerHTML = ''; // Clear the cart display
+    cart.forEach(cartItem => {
+        cartFunc(cartItem.name, cartItem.qty, cartItem.price); // Re-populate cart
+    });
+    calculateOrderFunc(cart); // Update the order summary
 }
